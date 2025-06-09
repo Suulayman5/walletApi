@@ -3,8 +3,9 @@
   "version": "1.0.0",
 "scripts": {
   "dev": "nodemon src/server.ts",
-  "build": "tsc",
-  "start": "node dist/server.js"
+  "build": "rm -rf dist/ && tsc",
+  "start": "node --enable-source-maps dist/server.js",
+  "test:build": "npm run build && ls -la dist/"
 },
   "keywords": [],
   "type": "module",
