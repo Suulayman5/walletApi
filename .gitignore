@@ -1,0 +1,17 @@
+.env
+dist
+node_modules
+coverage
+.vscode
+.DS_Store
+*.log
+*.tsbuildinfo
+*.tgz
+*.swp
+*.swo
+*.bak
+*.tmp
+*.zip
+*.rar
+*.tar.gz
+*.tar.bz2
