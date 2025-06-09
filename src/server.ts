@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { connectDb } from './config/db.js';
-
+import transactions from './routes/transactionRoutes.js';
 dotenv.config();
 
 
@@ -11,8 +11,8 @@ app.use(express.json());
 
 await connectDb();
 
-app.post('/api/transactions',);
+app.use('/api',transactions);
 const PORT = process.env.PORT || 3000; 
-app.listen(PORT, () => {
+app.listen(PORT, () => { 
   console.log(`Server is running on port =======>>>>>>>>${PORT}`);
 });
