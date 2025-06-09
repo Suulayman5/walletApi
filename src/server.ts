@@ -8,13 +8,24 @@ dotenv.config();
 
 const app = express();
 
-app.use(rateLimit)
+// Middlewares
+app.use(rateLimit);
 app.use(express.json());
 
-await connectDb();
+// Routes
+app.use('/api', transactions);
 
-app.use('/api',transactions);
-const PORT = process.env.PORT || 3000; 
-app.listen(PORT, () => { 
-  console.log(`Server is running on port =======>>>>>>>>${PORT}`);
-});
+// Database connection and server start
+const PORT = process.env.PORT || 3000;
+connectDb()
+  .then(() => {
+    const server = app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  })
+  .catch(err => {
+    console.error("Database connection failed", err);
+    process.exit(1);
+  });
+
+export const server = app;  // For testing
