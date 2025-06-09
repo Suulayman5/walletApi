@@ -2,11 +2,13 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { connectDb } from './config/db.js';
 import transactions from './routes/transactionRoutes.js';
-dotenv.config();
+import rateLimit from './middleware/rateLimiter.js';
 
+dotenv.config();
 
 const app = express();
 
+app.use(rateLimit)
 app.use(express.json());
 
 await connectDb();
