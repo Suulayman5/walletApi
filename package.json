@@ -1,7 +1,7 @@
 {
   "name": "walletapi",
   "version": "1.0.0",
-  "main": "dist/server.ts",
+  "main": "src/server.ts",
   "scripts": {
     "dev": "nodemon",
     "build": "tsc",
