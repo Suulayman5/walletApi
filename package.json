@@ -1,18 +1,19 @@
 {
   "name": "walletapi",
   "version": "1.0.0",
-"scripts": {
-  "dev": "nodemon src/server.ts",
-  "build": "rm -rf dist/ && tsc",
-  "start": "node --enable-source-maps dist/server.js",
-  "test:build": "npm run build && ls -la dist/"
-},
+  "scripts": {
+    "dev": "nodemon src/server.ts",
+    "build": "rm -rf dist/ && tsc",
+    "start": "node --enable-source-maps dist/server.js",
+    "test:build": "npm run build && ls -la dist/"
+  },
   "keywords": [],
   "type": "module",
   "author": "Suleiman",
   "license": "ISC",
   "description": "API for Wallet Management",
   "devDependencies": {
+    "@types/cron": "^2.0.1",
     "@types/express": "^5.0.3",
     "@types/mongoose": "^5.11.96",
     "@types/node": "^22.15.30",
@@ -25,6 +26,7 @@
     "@upstash/ratelimit": "^2.0.5",
     "@upstash/redis": "^1.34.9",
     "cors": "^2.8.5",
+    "cron": "^4.3.1",
     "dotenv": "^16.5.0",
     "express": "^4.21.0",
     "mongoose": "^8.15.1"
