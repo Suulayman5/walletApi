@@ -1,9 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { connectDb } from './config/db.js';
-import transactions from './routes/transactionRoutes.js';
-import rateLimit from './middleware/rateLimiter.js';
-import job from './config/cron.js';
+import { connectDb } from './config/db.ts';
+import transactions from './routes/transactionRoutes.ts';
+import rateLimit from './middleware/rateLimiter.ts';
+import job from './config/cron.ts';
 dotenv.config();
 
 const app = express();
@@ -12,7 +12,7 @@ const app = express();
 if (process.env.NODE_ENV === 'production') {
   job.start()
 }
-// Middlewares
+// Middlewares 
 app.use(rateLimit);
 app.use(express.json());
 
@@ -22,7 +22,7 @@ app.get('/api/helth', (req, res) =>{
 })
 
 // Routes
-app.use('/api', transactions);
+app.use('/api', transactions); 
 
 const PORT = process.env.PORT || 3000;
 connectDb()

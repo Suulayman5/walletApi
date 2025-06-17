@@ -1,12 +1,12 @@
 {
   "name": "walletapi",
   "version": "1.0.0",
-  "scripts": {
-    "dev": "nodemon src/server.ts",
-    "build": "rm -rf dist/ && tsc",
-    "start": "node --enable-source-maps dist/server.js",
-    "test:build": "npm run build && ls -la dist/"
-  },
+"scripts": {
+  "dev": "nodemon",
+  "build": "rm -rf dist && tsc",
+  "start": "node --enable-source-maps dist/server.js",
+  "test:build": "npm run build && ls -la dist/"
+},
   "keywords": [],
   "type": "module",
   "author": "Suleiman",
