@@ -1,11 +1,11 @@
 {
   "name": "walletapi",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "main": "server.ts",
 "scripts": {
   "dev": "nodemon",
-  "build": "rm -rf dist && tsc",
-  "start": "node --enable-source-maps dist/server.js",
-  "test:build": "npm run build && ls -la dist/"
+  "build": "tsc",
+  "start": "node dist/server.js"
 },
   "keywords": [],
   "type": "module",

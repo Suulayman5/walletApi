@@ -1,4 +1,4 @@
-import { Transaction } from "../models/transactionModel.ts";
+import { Transaction } from "../models/transactionModel.js";
 import { Request, Response } from "express";
 
 interface CreateTransactionRequestBody {
@@ -119,9 +119,9 @@ export const getSummaryByUserId = async (req: Request, res: Response) => {
         const summary = transactions.reduce((acc, transaction) => {
             acc.total += transaction.amount;
             acc.count += 1;
-            if (transaction.category === 'income') {
+            if (transaction.category === 'Income') {
                 acc.income += transaction.amount;
-            } else if (transaction.category === 'expenses') {
+            } else if (transaction.category === 'Expenses') {
                 acc.expenses -= transaction.amount;
             }
             return acc;

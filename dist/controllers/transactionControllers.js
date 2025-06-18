@@ -98,11 +98,11 @@ export const getSummaryByUserId = async (req, res) => {
         const summary = transactions.reduce((acc, transaction) => {
             acc.total += transaction.amount;
             acc.count += 1;
-            if (transaction.category === 'income') {
+            if (transaction.category === 'Income') {
                 acc.income += transaction.amount;
             }
-            else if (transaction.category === 'expenses') {
-                acc.expenses += transaction.amount;
+            else if (transaction.category === 'Expenses') {
+                acc.expenses -= transaction.amount;
             }
             return acc;
         }, { total: 0, income: 0, expenses: 0, count: 0 });

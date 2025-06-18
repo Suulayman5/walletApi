@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { createTransactions, getTransactionByUserId, deleteTransactions, getSummaryByUserId } from "../controllers/transactionControllers.ts";
+import { createTransactions, getTransactionByUserId, deleteTransactions, getSummaryByUserId } from "../controllers/transactionControllers.js";
 
 const router = Router();
 
