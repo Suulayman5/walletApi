@@ -2,10 +2,13 @@ import mongoose from "mongoose";
 
 const transactionSchema = new mongoose.Schema({
     userId: {
-        // type: mongoose.Schema.Types.ObjectId,
-        // ref: "User",
         type: String,
         required: true,
+    },
+    title: {
+        type: String,
+        required: true,
+
     },
     amount: {
         type: Number,
@@ -13,7 +16,7 @@ const transactionSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        enum: ["Income", "Expenses", "Shopping", "Transportation", "Entertainment", "Bills", "Income", "Other", "Foods & drinks"],
+        enum: ["Income", "Expenses"],
         required: true,
     },
     description: {

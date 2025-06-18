@@ -6,6 +6,7 @@ interface CreateTransactionRequestBody {
     amount: number;
     category: string;
     description?: string;
+    title?: string;
 }
 
 interface CreateTransactionResponse {
@@ -19,13 +20,14 @@ export const createTransactions = async (
     res: Response<CreateTransactionResponse>
 ): Promise<void> => {
     try {
-        const { userId, amount, category, description } = req.body;
-        if (!userId || amount === undefined || !category) {
+        const { userId, amount, category, description, title } = req.body;
+        if (!userId || !title || amount === undefined || !category) {
             res.status(400).json({ message: "All fields are required." } as any);
             return;
         }
         const newTransaction = new Transaction({
             userId,
+            title,
             amount,
             category,
             description,
@@ -78,13 +80,13 @@ export const getTransactionByUserId = async (req: Request, res: Response): Promi
 }
 
 export const deleteTransactions = async (req: Request, res: Response) => {
-    const { transactionId } = req.params;
+    const { Id } = req.params;
     try {
-        if (!transactionId) {
+        if (!Id) {
             res.status(400).json({ message: "Transaction ID is required." } as any);
             return;
         }
-        const deletedTransaction = await Transaction.findByIdAndDelete(transactionId);
+        const deletedTransaction = await Transaction.findByIdAndDelete(Id);
        
         if (deletedTransaction === null) {
             res.status(404).json({

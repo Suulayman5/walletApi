@@ -8,6 +8,6 @@ const router = Router();
 router.post("/transactions", createTransactions);
 router.get("/transactions/:userId", getTransactionByUserId); 
 router.get("/transactions/summary/:userId", getSummaryByUserId);  
-router.delete("/transactions/:transactionId", deleteTransactions);
+router.delete("/transactions/:id", deleteTransactions);
  
 export default router;
