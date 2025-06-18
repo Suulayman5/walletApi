@@ -113,19 +113,22 @@ export const getSummaryByUserId = async (req: Request, res: Response) => {
     try {
         const { userId } = req.params;
         if (!userId) {
-            res.status(400).json({ message: "User ID is required." } as any);
+            res.status(400).json({ message: "User ID is required." });
             return;
         }
+
         const transactions = await Transaction.find({ userId });
-       
+
         const summary = transactions.reduce((acc, transaction) => {
             acc.total += transaction.amount;
             acc.count += 1;
-            if (transaction.category === 'Income') {
+
+            if (transaction.amount > 0) {
                 acc.income += transaction.amount;
-            } else if (transaction.category === 'Expenses') {
-                acc.expenses -= transaction.amount;
+            } else {
+                acc.expenses += Math.abs(transaction.amount); // flip to positive
             }
+
             return acc;
         }, { total: 0, income: 0, expenses: 0, count: 0 });
 
@@ -134,13 +137,15 @@ export const getSummaryByUserId = async (req: Request, res: Response) => {
             message: "Summary retrieved successfully",
             summary,
         });
+
         console.log("Summary retrieved successfully====>>>>>>", summary);
     } catch (error) {
         res.status(500).json({
             success: false,
             message: "Error retrieving summary",
             summary: null,
-        } as any);
-        console.log("Error retrieving summary====>>>>>>>>>>", error);
+        });
+        console.error("Error retrieving summary====>>>>>>>>>>", error);
     }
-}
+};
+
