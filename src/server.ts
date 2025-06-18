@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
 app.use(rateLimit);
 app.use(express.json());
 
-app.get('/api/helth', (req, res) => {
+app.get('/api/helth', (req, res) => { 
   res.status(200).json({ status: 'ok' });
 });
 

@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "main": "server.ts",
 "scripts": {
-  "dev": "nodemon",
+  "dev": "nodemon --watch src --ext ts --exec \"node --trace-warnings --loader ts-node/esm src/server.ts\"",
   "build": "tsc",
   "start": "node dist/server.js"
 },
