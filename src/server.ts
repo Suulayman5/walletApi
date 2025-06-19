@@ -20,6 +20,12 @@ app.use(express.json());
 app.get('/api/helth', (req, res) => { 
   res.status(200).json({ status: 'ok' });
 });
+app.use((req, res, next) => {
+  console.log(`[${req.method}] ${req.url}`);
+  console.log('Headers:', req.headers);
+  console.log('Body:', req.body); // This should print the full body
+  next();
+});
 
 // Routes
 app.use('/api', transactions);
