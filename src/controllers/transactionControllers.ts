@@ -21,6 +21,8 @@ export const createTransactions = async (
 ): Promise<void> => {
     try {
         const { userId, amount, category, description, title } = req.body;
+        console.log("BODY RECEIVED ===>", req.body);
+
         if (!userId || !title || amount === undefined || !category) {
             res.status(400).json({ message: "All fields are required." } as any);
             return;
